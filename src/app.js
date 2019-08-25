@@ -1,7 +1,16 @@
-const express = require('express');
+import express from 'express';
+import routes from './routes';
 
-const App = express();
+class App {
+  constructor() {
+    this.server = express();
 
-App.get('/', (req, res) => res.json({hello: 'Hello World!'}));
+    this.routes();
+  }
 
-app.listen(8877);
+  routes() {
+    this.server.use(routes);
+  }
+}
+
+export default new App().server;
